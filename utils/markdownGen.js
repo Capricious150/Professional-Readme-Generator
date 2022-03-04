@@ -13,6 +13,7 @@ function renderLicenseSection(license) {}
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
   return `# ${data.title}
+  ![License Badge for ${data.license} license](/assets/images/${data.license}.png)
 
   ## Description 
   ${data.description}
@@ -27,6 +28,8 @@ function generateMarkdown(data) {
   [Tests](#tests)
   
   [Questions](#questions)
+
+  [License](#license)
   
   
   ### Installation 
@@ -45,6 +48,8 @@ function generateMarkdown(data) {
   To view my other repositories or see the repo for this proect, [visit my GitHub.](https://github.com/${data.gitHub})
   To contact me with questions, please email me at <${data.email}>
 
+  #### License
+  This application is covered under the following license: ${data.license}
 `;
 }
 
