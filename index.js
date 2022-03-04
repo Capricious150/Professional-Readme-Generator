@@ -11,7 +11,7 @@ const licenseChoices = ["GNU AGPLv3", "GNU GPLv3", "Mozilla Public License 2.0",
 // Calls the "generateMarkdown" method from constant generateMarkdown
 
 //Not really necessary, but creating a super quick constant for the name of the file to be created 
-const readMe = "README.md"
+const readMe = "sample_README.md"
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -65,7 +65,7 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
+    fs.writeFile(fileName, markdown.generateMarkdown(data), (err) => {
         (err) ? console.log(err) : console.log(`${fileName} created successfully!`)
     })
 }
@@ -74,10 +74,8 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
     .then((data) => {
-        console.log(data)
-        console.log(markdown.generateMarkdown())
-    }
-    )
+        writeToFile(readMe, data);
+    })
 }
 
 // Function call to initialize app
