@@ -1,10 +1,17 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generateMarkdown = require('./utils/generateMarkdown.js')
+
+// constant for the generateMarkdown.js file
+const markdown = require('./utils/markdownGen.js')
+console.log(markdown);
 
 const licenseChoices = ["GNU AGPLv3", "GNU GPLv3", "Mozilla Public License 2.0", "MIT", "The Unlicense"]
-const markdown;
+
+// Calls the "generateMarkdown" method from constant generateMarkdown
+
+//Not really necessary, but creating a super quick constant for the name of the file to be created 
+const readMe = "README.md"
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -58,13 +65,19 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, markdown, )
+    fs.writeFile(fileName, data, (err) => {
+        (err) ? console.log(err) : console.log(`${fileName} created successfully!`)
+    })
 }
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-    .then()
+    .then((data) => {
+        console.log(data)
+        console.log(markdown.generateMarkdown())
+    }
+    )
 }
 
 // Function call to initialize app
