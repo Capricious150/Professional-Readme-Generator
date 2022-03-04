@@ -1,10 +1,18 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
+const generateMarkdown = require('./utils/generateMarkdown.js')
+
+const licenseChoices = ["GNU AGPLv3", "GNU GPLv3", "Mozilla Public License 2.0", "MIT", "The Unlicense"]
+const markdown;
 
 // TODO: Create an array of questions for user input
-const licenseChoices = ["GNU AGPLv3", "GNU GPLv3", "Mozilla Public License 2.0", "MIT", "The Unlicense"]
 const questions = [
+    {
+        type: 'input',
+        name: 'title',
+        message: 'Enter your project title.'
+    },
     {
         type: 'input',
         name: 'description',
@@ -31,6 +39,12 @@ const questions = [
         message: 'Enter test instructions.'
     },
     {
+        type: 'list',
+        name: 'license',
+        message: 'Choose a license for this project.',
+        choices: licenseChoices
+    },
+    {
         type: 'input',
         name: 'gitHub',
         message: 'Enter your GitHub username.'
@@ -39,29 +53,18 @@ const questions = [
         type: 'input',
         name: 'email',
         message: 'Enter your developer email address.'
-    },
-    {
-        type: 'input',
-        name: 'title',
-        message: 'Enter your project title.'
-    },
-    {
-        type: 'list',
-        name: 'license',
-        message: 'Choose a license for this project.',
-        choices: licenseChoices
     }
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, markdown, )
+}
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions)
-    .then(writeToFile("README.md", data)
-    
-    )
+    .then()
 }
 
 // Function call to initialize app
