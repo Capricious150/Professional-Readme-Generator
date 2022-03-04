@@ -57,7 +57,12 @@ const questions = [
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquirer.prompt(questions)
+    .then(writeToFile("README.md", data)
+    
+    )
+}
 
 // Function call to initialize app
 init();
