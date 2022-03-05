@@ -1,4 +1,6 @@
-// TODO: Create a function to generate markdown for README
+// A function to generate markdown for README.
+// Uses nested methods to format some of the data in the Shields.IO URL
+
 function generateMarkdown(data) {
   return `# ${data.title}
   ![License Badge for ${data.license} license](https://img.shields.io/badge/license-${data.license.replace(/ /gi,"%20")}-${data.color.toLowerCase()})
@@ -41,6 +43,9 @@ function generateMarkdown(data) {
 `;
 }
 
+// Exporting the function as an object. Earlier builds of this application included multiple functions
+// being exported. Now, it's only one, but by keeping it an object, I didn't need to mess with some syntax
+// in index.js
 module.exports = { 
   generateMarkdown
 }

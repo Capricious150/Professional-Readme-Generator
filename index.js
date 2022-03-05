@@ -4,16 +4,16 @@ const inquirer = require('inquirer');
 
 // constant for the generateMarkdown.js file
 const markdown = require('./utils/markdownGen.js')
-// console.log(markdown);
 
+// Two arrays which will be used in prompts (See array "questions" and "init()")
 const licenseChoices = ["GNU AGPLv3", "GNU GPLv3", "Mozilla Public License 2.0", "MIT", "The Unlicense"]
 const colorChoices = ["Red", "Blue", "Green", "Yellow"]
-// Calls the "generateMarkdown" method from constant generateMarkdown
+
 
 //Not really necessary, but creating a super quick constant for the name of the file to be created 
 const readMe = "sample_README.md"
 
-// TODO: Create an array of questions for user input
+// An array of questions for user input
 const questions = [
     {
         type: 'input',
@@ -69,14 +69,22 @@ const questions = [
     }
 ];
 
-// TODO: Create a function to write README file
+// A function to write README file
+// Uses fs.writeFile to create the file itself, references method markdown.generateMarkdown for the content.
+// Check out ./utils/generateMarkdown.js for the actual body that's being sent in. 
+
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, markdown.generateMarkdown(data), (err) => {
         (err) ? console.log(err) : console.log(`${fileName} created successfully!`)
     })
 }
 
-// TODO: Create a function to initialize app
+// A function to initialize app
+// Uses inquirer's prompt method with the question array from above.
+// On success, fires off the writeToFile() function above.
+// There IS NO CATCH method on this code, so if it fails, it will do so gracelessly. 
+// (Luckily, I've yet to see it fail)
+
 function init() {
     inquirer.prompt(questions)
     .then((data) => {
