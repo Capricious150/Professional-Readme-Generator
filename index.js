@@ -4,10 +4,10 @@ const inquirer = require('inquirer');
 
 // constant for the generateMarkdown.js file
 const markdown = require('./utils/markdownGen.js')
-console.log(markdown);
+// console.log(markdown);
 
 const licenseChoices = ["GNU AGPLv3", "GNU GPLv3", "Mozilla Public License 2.0", "MIT", "The Unlicense"]
-
+const colorChoices = ["Red", "Blue", "Green", "Yellow"]
 // Calls the "generateMarkdown" method from constant generateMarkdown
 
 //Not really necessary, but creating a super quick constant for the name of the file to be created 
@@ -50,6 +50,12 @@ const questions = [
         name: 'license',
         message: 'Choose a license for this project.',
         choices: licenseChoices
+    },
+    {
+        type: 'list',
+        name: 'color',
+        message: 'Choose a color for your license badge.',
+        choices: colorChoices
     },
     {
         type: 'input',
